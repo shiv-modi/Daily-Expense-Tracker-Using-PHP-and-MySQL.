@@ -7,7 +7,6 @@ Note 🔴: - This code has been modified from another project's source code on t
 You can modify the code to meet your specific requirements.
 
 🟦 Features :
-    
     1) Secure Login Form 
     2) Signup Form
     3) user Dashboard
