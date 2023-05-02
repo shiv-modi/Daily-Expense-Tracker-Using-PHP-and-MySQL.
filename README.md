@@ -17,9 +17,29 @@ You can modify the code to meet your specific requirements.
  7) Manage Lending
  8) Analytics through graph
  9) Report 
-10) Setting
+ 10) Setting
     
 🟩 Installation/Setup
+
+ 1) Open your XAMPP/WAMP's Control Panel and start the Apache and MySQL.
+ 2) Extract the downloaded source code zip file.
+ 3) If you are using XAMPP, copy the extracted source code folder and paste it into the XAMPP's "htdocs" directory. And If you are using WAMP, paste it into the "www" directory.
+ 4) Browse the PHPMyAdmin in a browser. i.e. http://localhost/phpmyadmin
+ 5) Import the provided SQL file. The file is known as expenditure.sql located inside the database folder.
+ 6) Browse the Budget and Expense Tracker System in a browser. i.e. http://localhost/Daily-Expense-Tracker-Using-PHP-and-MySQL
+ 
+🟪 User Account :
+
+-> Username : user@gmail.com
+
+-> Password : 12345678
+
+✨Screenshots :
+
+
+
+ 
+ 
 
 
 
