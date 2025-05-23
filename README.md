@@ -14,7 +14,7 @@ The following project documentation will be added soon:
 
 ---
 
-🙏 **Thanks for your support in helping make this repository even better!**
+🙏 **Thanks for your support in helping make this repository even better! 🌟**
 
 ## 🗃️ Project Details
 
