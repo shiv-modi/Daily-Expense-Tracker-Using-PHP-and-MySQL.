@@ -27,11 +27,13 @@ You can modify the code to meet your specific requirements.
  3) user Dashboard
  4) Add-Expenses
  5) Manage Expenses
- 6) Add-Lending
- 7) Manage Lending
- 8) Analytics through graph
- 9) Report 
- 10) Setting
+ 6) Add-Income
+ 7) Manage Income
+ 8) Add-Lending
+ 9) Manage Lending
+ 10) Analytics through graph
+ 11) Report 
+ 12) Setting
     
 🟩 Installation/Setup
 

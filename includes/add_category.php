@@ -4,20 +4,22 @@ include('database.php');
 
 if (isset($_POST['add-category-submit'])) {
   $CategoryName = mysqli_real_escape_string($db, $_POST['category-name']);
+  $Mode = ($_POST['mode'] === 'income') ? 'income' : 'expense'; // Default to expense
   $userId = $_SESSION['detsuid'];
 
-  // Use prepared statement to prevent SQL injection
-  $stmt = $db->prepare("INSERT INTO tblcategory (CategoryName, UserId) VALUES (?, ?)");
-  $stmt->bind_param("si", $CategoryName, $userId);
+  $stmt = $db->prepare("INSERT INTO tblcategory (CategoryName, Mode, UserId) VALUES (?, ?, ?)");
+  $stmt->bind_param("ssi", $CategoryName, $Mode, $userId);
   $result = $stmt->execute();
 
   if ($result) {
-    $message = "Category added successfully!";
-    echo "<script type='text/javascript'>alert('$message');</script>";
-    echo " <script type='text/javascript'>window.location.href = 'add-expenses.php';</script>";
+    echo "<script>alert('Category added successfully!');</script>";
+    if ($Mode === 'income') {
+      echo "<script>window.location.href = 'add-income.php';</script>";
+    } else {
+      echo "<script>window.location.href = 'add-expenses.php';</script>";
+    }
     exit();
   } else {
-    // Error adding category
     echo "Error: " . mysqli_error($db);
   }
 }
