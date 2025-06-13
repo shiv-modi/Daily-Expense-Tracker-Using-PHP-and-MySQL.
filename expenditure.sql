@@ -62,6 +62,7 @@ INSERT INTO `lending` (`id`, `UserId`, `name`, `date_of_lending`, `amount`, `des
 CREATE TABLE `tblcategory` (
   `CategoryId` int(11) NOT NULL,
   `CategoryName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Mode` enum('expense','income') NOT NULL DEFAULT 'expense',
   `UserId` int(11) NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -70,14 +71,54 @@ CREATE TABLE `tblcategory` (
 -- Dumping data for table `tblcategory`
 --
 
-INSERT INTO `tblcategory` (`CategoryId`, `CategoryName`, `UserId`, `CreatedAt`) VALUES
-(73, 'Food ', 68, '2023-04-12 05:06:22'),
-(74, 'Games 🎮', 68, '2023-04-12 05:06:30'),
-(75, 'Entertainment 🍿', 68, '2023-04-12 05:06:46'),
-(76, 'Petrol ⛽⛽', 68, '2023-04-12 05:11:53'),
-(77, 'Electricity ⚡⚡', 68, '2023-04-12 05:13:04'),
-(78, 'Rent 🏠', 68, '2023-04-12 05:14:10'),
-(79, 'Entertainment', 68, '2023-04-12 10:27:52');
+INSERT INTO `tblcategory` (`CategoryId`, `CategoryName`, `UserId`, `Mode`, `CreatedAt`) VALUES
+(73, 'Food ', 68, 'expense', '2023-04-12 05:06:22'),
+(74, 'Games 🎮', 68, 'expense', '2023-04-12 05:06:30'),
+(75, 'Entertainment 🍿', 68, 'expense', '2023-04-12 05:06:46'),
+(76, 'Petrol ⛽⛽', 68, 'expense', '2023-04-12 05:11:53'),
+(77, 'Electricity ⚡⚡', 68, 'expense', '2023-04-12 05:13:04'),
+(78, 'Rent 🏠', 68, 'expense', '2023-04-12 05:14:10'),
+(79, 'Entertainment', 68, 'expense', '2023-04-12 10:27:52'),
+(80, 'Salary 💰', 68, 'income', '2023-04-01 09:00:00'),
+(81, 'Freelance Work 💻', 68, 'income', '2023-04-01 09:30:00'),
+(82, 'Investment Returns 📈', 68, 'income', '2023-04-01 10:00:00'),
+(83, 'Side Business 🏪', 68, 'income', '2023-04-01 10:30:00'),
+(84, 'Rent Income 🏠', 68, 'income', '2023-04-01 11:00:00'),
+(85, 'Bonus 🎉', 68, 'income', '2023-04-01 11:30:00'),
+(86, 'Gift Money 🎁', 68, 'income', '2023-04-01 12:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblincome`
+--
+
+CREATE TABLE `tblincome` (
+  `ID` int(10) NOT NULL,
+  `UserId` int(10) NOT NULL,
+  `IncomeDate` date DEFAULT NULL,
+  `CategoryId` int(11) NOT NULL,
+  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `IncomeAmount` varchar(200) DEFAULT NULL,
+  `Description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NoteDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblincome`
+--
+
+INSERT INTO `tblincome` (`ID`, `UserId`, `IncomeDate`, `CategoryId`, `category`, `IncomeAmount`, `Description`, `NoteDate`) VALUES
+(1, 68, '2023-04-01', 80, 'Salary 💰', '45000', 'Monthly salary payment', '2023-04-01 09:00:00'),
+(2, 68, '2023-04-05', 81, 'Freelance Work 💻', '12000', 'Web development project 💻', '2023-04-05 14:30:00'),
+(3, 68, '2023-04-08', 82, 'Investment Returns 📈', '3500', 'Mutual fund returns 📊', '2023-04-08 11:15:00'),
+(4, 68, '2023-04-10', 83, 'Side Business 🏪', '8000', 'Online store sales 🛒', '2023-04-10 16:20:00'),
+(5, 68, '2023-04-12', 84, 'Rent Income 🏠', '15000', 'Property rent received 🏡', '2023-04-12 10:00:00'),
+(6, 68, '2023-04-15', 85, 'Bonus 🎉', '10000', 'Performance bonus 🏆', '2023-04-15 12:30:00'),
+(7, 68, '2023-04-18', 86, 'Gift Money 🎁', '5000', 'Birthday gift from family 🎂', '2023-04-18 18:45:00'),
+(8, 68, '2023-03-01', 80, 'Salary 💰', '45000', 'Monthly salary payment', '2023-03-01 09:00:00'),
+(9, 68, '2023-03-15', 81, 'Freelance Work 💻', '15000', 'Mobile app development 📱', '2023-03-15 14:00:00'),
+(10, 68, '2023-03-25', 83, 'Side Business 🏪', '6500', 'Online consultancy 💼', '2023-03-25 11:30:00');
 
 -- --------------------------------------------------------
 
@@ -176,6 +217,12 @@ ALTER TABLE `tblcategory`
   ADD KEY `UserId` (`UserId`);
 
 --
+-- Indexes for table `tblincome`
+--
+ALTER TABLE `tblincome`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tblexpense`
 --
 ALTER TABLE `tblexpense`
@@ -202,7 +249,13 @@ ALTER TABLE `lending`
 -- AUTO_INCREMENT for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `tblincome`
+--
+ALTER TABLE `tblincome`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblexpense`
@@ -214,7 +267,7 @@ ALTER TABLE `tblexpense`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Constraints for dumped tables
@@ -225,6 +278,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `tblcategory`
   ADD CONSTRAINT `tblcategory_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

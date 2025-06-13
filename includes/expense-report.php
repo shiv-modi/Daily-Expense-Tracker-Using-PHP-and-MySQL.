@@ -49,9 +49,15 @@ if (strlen($_SESSION['detsuid']==0)) {
             <span class="links_name">Expenses</span>
           </a>
         </li>
+         <li>
+          <a href="add-income.php">
+            <i class='bx bx-box'></i>
+            <span class="links_name">Income</span>
+          </a>
+        </li>
         <li>
-          <a href="manage-expenses.php">
-            <i class='bx bx-list-ul' ></i>
+          <a href="manage-transaction.php">
+            <i class='bx bx-list-ul'></i>
             <span class="links_name">Manage List</span>
           </a>
         </li>
